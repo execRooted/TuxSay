@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 class TuxSay
@@ -7,7 +7,7 @@ class TuxSay
     {
         Console.Clear();
 
-        string message = "BTW, I use Arch!";
+        string message = "Hello, World!";
         string mood = "-1";
         bool noMessage = false;
 
@@ -78,7 +78,7 @@ class TuxSay
         Console.WriteLine("  -1  Normal      -2  Angry       -3  Surprised");
         Console.WriteLine("  -4  Paranoid    -5  Happy       -6  Sleepy");
         Console.WriteLine("  -7  Crying      -8  Cool        -9  Dead");
-        Console.WriteLine("  -10 Wizard\n");
+        Console.WriteLine("  -0 Wizard\n");
         Console.WriteLine("Examples:");
         Console.WriteLine("  tuxsay -3 \"Segmentation fault!\"");
         Console.WriteLine("  tuxsay -7 I deleted my node_modules");
@@ -239,7 +239,7 @@ class TuxSay
                 Console.WriteLine(padding + @"\___)=(___/");
                 break;
 
-            case "-10": 
+            case "-0": 
                 Console.WriteLine(padding + @"   .--.");
                 Console.WriteLine(padding + @"  |*-* |");
                 Console.WriteLine(padding + @"  |/ \ |");
