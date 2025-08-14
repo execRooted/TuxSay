@@ -5,7 +5,7 @@ TuxSay is a fun C# console app that prints an ASCII Tux (Linux penguin) with a c
 > Made on Arch Linux. You can see compatability down below.
 
 
-![tuxsay photo](photos/tuxsay.png)
+![Tuxy saying Hello, World!](photos/tuxsay.png)
 
 
 
