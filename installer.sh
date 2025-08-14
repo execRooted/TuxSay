@@ -15,6 +15,7 @@ detect_linux() {
         echo "openSUSE"
     else
         echo "unsupported"
+        exit 1
     fi
 }
 
