@@ -84,8 +84,7 @@ class TuxSay
         Console.WriteLine("  tuxsay -7 I deleted my node_modules");
         Console.WriteLine("  tuxsay -n           # Just shows Tux without any message");
         Console.WriteLine("  tuxsay -n -5        # Tux happy, no message");
-        Console.WriteLine("Note: The order of the arguments matter! If you input tuxsay -1 -n Tux will say "-n"");
-        
+        Console.WriteLine("Note: The order of the arguments matter! If you input tuxsay -1 -n Tux will say \"-n\"");
     }
 
     static void PrintSpeechBubble(string text)
