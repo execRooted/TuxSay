@@ -14,7 +14,7 @@ detect_linux() {
     elif command -v zypper &> /dev/null; then
         echo "Opensuse"
     else
-        echo "Unsupported OS. Made for Linux!"
+        echo "Unsupported OS"
         exit 1
     fi
 }
