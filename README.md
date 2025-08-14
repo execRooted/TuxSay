@@ -4,6 +4,11 @@ TuxSay is a fun C# console app that prints an ASCII Tux (Linux penguin) with a c
 
 > Made and tested on Arch Linux.
 
+
+![tuxsay photo](photos/tuxsay.png)
+
+
+
 ## Features
 
 - Display Tux with different moods (`-1` to `-10`).  
