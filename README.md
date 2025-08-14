@@ -38,7 +38,7 @@ chmod +x uninstaller.sh
 sudo ./uninstaller.sh
 ```
 ---
-##Compatability:
+## Compatability:
 
 | Linux Family         | Package Manager | Examples / Notes                                    |
 |---------------------|----------------|---------------------------------------------------|
