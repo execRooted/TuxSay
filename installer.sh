@@ -14,14 +14,13 @@ detect_linux() {
     elif command -v zypper &> /dev/null; then
         echo "openSUSE"
     else
-        echo "Unsupported OS"
-        exit 1
+        echo "unsupported"
     fi
 }
 
 LINUX_FAMILY=$(detect_linux)
 if [ "$LINUX_FAMILY" = "unsupported" ]; then
-    echo "Unsupported OS. Made for Linux only!"
+    echo "Unsupported OS"
     exit 1
 fi
 
