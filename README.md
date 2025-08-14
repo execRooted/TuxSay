@@ -2,7 +2,7 @@
 
 TuxSay is a fun C# console app that prints an ASCII Tux (Linux penguin) with a customizable message and mood.  
 
-> Made and tested on Arch Linux.
+> Made on Arch Linux. You can see compatability down below.
 
 
 ![tuxsay photo](photos/tuxsay.png)
@@ -37,6 +37,16 @@ chmod +x uninstaller.sh
 ```
 sudo ./uninstaller.sh
 ```
+---
+##Compatability:
+
+| Linux Family         | Package Manager | Examples / Notes                                    |
+|---------------------|----------------|---------------------------------------------------|
+| **Arch-based**       | `pacman`       | Arch Linux, Manjaro, EndeavourOS, ArcoLinux, etc. |
+| **Debian-based**     | `apt`          | Debian, Ubuntu, Kali Linux, Linux Mint, Pop!_OS, Elementary OS |
+| **Fedora/RHEL-based**| `dnf`          | Fedora, CentOS 8+, Red Hat Enterprise Linux 8+, Rocky Linux, AlmaLinux |
+| **openSUSE**         | `zypper`       | openSUSE Leap, openSUSE Tumbleweed, SUSE Linux Enterprise |
+
 
 ---
 
