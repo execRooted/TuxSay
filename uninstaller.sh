@@ -7,15 +7,15 @@ echo "=== TuxSay Uninstaller ==="
 # Function to detect Linux family
 detect_linux() {
     if command -v pacman &> /dev/null; then
-        echo "arch"
+        echo "Arch"
     elif command -v apt &> /dev/null; then
-        echo "debian"
+        echo "Debian"
     elif command -v dnf &> /dev/null; then
-        echo "fedora"
+        echo "Fedora"
     elif command -v zypper &> /dev/null; then
-        echo "opensuse"
+        echo "openSUSE"
     else
-        echo "Unsupported OS"
+        echo "Unsupported OS. Exiting..."
         exit 1
     fi
 }
@@ -37,17 +37,17 @@ if command -v dotnet &> /dev/null; then
     read -p "Do you want to remove the .NET SDK? [y/N]: " REMOVE_DOTNET
     if [[ "$REMOVE_DOTNET" =~ ^[Yy]$ ]]; then
         case "$LINUX_FAMILY" in
-            arch)
+             Arch)
                 sudo pacman -Rns --noconfirm dotnet-sdk
                 ;;
-            debian)
+            Debian)
                 sudo apt remove --purge -y dotnet-sdk-7.0
                 sudo apt autoremove -y
                 ;;
-            fedora)
+            Fedora)
                 sudo dnf remove -y dotnet-sdk-7.0
                 ;;
-            opensuse)
+            openSUSE)
                 sudo zypper remove -y dotnet-sdk-7.0
                 ;;
         esac
