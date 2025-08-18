@@ -6,15 +6,15 @@ echo "=== TuxSay Installer ==="
 # Function to detect Linux family
 detect_linux() {
     if command -v pacman &> /dev/null; then
-        echo "arch"
+        echo "Arch"
     elif command -v apt &> /dev/null; then
-        echo "debian"
+        echo "Debian"
     elif command -v dnf &> /dev/null; then
-        echo "fedora"
+        echo "Fedora"
     elif command -v zypper &> /dev/null; then
-        echo "opensuse"
+        echo "openSUSE"
     else
-        echo "unsupported"
+        echo "Unsupported OS. Exiting..."
     fi
 }
 
@@ -29,11 +29,11 @@ echo "Detected Linux family: $LINUX_FAMILY"
 # Function to install .NET SDK
 install_dotnet() {
     case "$LINUX_FAMILY" in
-        arch)
+        Arch)
             echo "Installing .NET SDK on Arch-based system..."
             sudo pacman -Sy --noconfirm dotnet-sdk
             ;;
-        debian)
+        Debian)
             echo "Installing .NET SDK on Debian/Ubuntu..."
             OS_VERSION="unknown"
             if [ -f /etc/os-release ]; then
@@ -50,11 +50,11 @@ install_dotnet() {
             sudo apt update
             sudo apt install -y apt-transport-https dotnet-sdk-7.0
             ;;
-        fedora)
+        Fedora)
             echo "Installing .NET SDK on Fedora..."
             sudo dnf install -y dotnet-sdk-7.0
             ;;
-        opensuse)
+        openSUSE)
             echo "Installing .NET SDK on openSUSE..."
             sudo zypper install -y dotnet-sdk-7.0
             ;;
