@@ -115,7 +115,7 @@ sudo chmod +x /usr/local/bin/tasky
 echo "🔵 Creating desktop entry..."
 sudo tee /usr/share/applications/tasky.desktop > /dev/null <<EOF
 [Desktop Entry]
-Name=Tasky 
+Name=Tasky
 Comment=Task Management Application
 Exec=tasky
 Icon=utilities-terminal
