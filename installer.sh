@@ -6,13 +6,13 @@ echo "=== TuxSay Installer ==="
 # Function to detect Linux family
 detect_linux() {
     if command -v pacman &> /dev/null; then
-        echo "Arch"
+        echo "arch"
     elif command -v apt &> /dev/null; then
-        echo "Debian"
+        echo "debian"
     elif command -v dnf &> /dev/null; then
-        echo "Fedora"
+        echo "fedora"
     elif command -v zypper &> /dev/null; then
-        echo "openSUSE"
+        echo "opensuse"
     else
         echo "unsupported"
     fi
