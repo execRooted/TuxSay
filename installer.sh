@@ -2,8 +2,7 @@
 set -e
 clear
 
-echo "🚀 === Tasky System-Wide Installer ==="
-
+echo "=== TuxSay Installer ==="
 # Function to detect Linux family
 detect_linux() {
     if command -v pacman &> /dev/null; then
@@ -21,24 +20,21 @@ detect_linux() {
 
 LINUX_FAMILY=$(detect_linux)
 if [ "$LINUX_FAMILY" = "unsupported" ]; then
-    echo "❌ Unsupported OS"
+    echo "Unsupported OS"
     exit 1
 fi
 
-echo "🔎 Detected Linux family: $LINUX_FAMILY"
+echo "Detected Linux family: $LINUX_FAMILY"
 
-# Function to install dependencies
-install_deps() {
+# Function to install .NET SDK
+install_dotnet() {
     case "$LINUX_FAMILY" in
         arch)
-            echo "🔵 Installing dependencies on Arch..."
-            sudo pacman -Sy --needed --noconfirm base-devel git dotnet-sdk mpv
+            echo "Installing .NET SDK on Arch-based system..."
+            sudo pacman -Sy --noconfirm dotnet-sdk
             ;;
         debian)
-            echo "🔵 Installing dependencies on Debian/Ubuntu..."
-            sudo apt update
-            sudo apt install -y wget git apt-transport-https mpv
-
+            echo "Installing .NET SDK on Debian/Ubuntu..."
             OS_VERSION="unknown"
             if [ -f /etc/os-release ]; then
                 OS_VERSION=$(grep 'VERSION_ID' /etc/os-release | cut -d '"' -f2)
@@ -52,81 +48,53 @@ install_deps() {
             rm "$TMP_DEB"
 
             sudo apt update
-            sudo apt install -y dotnet-sdk-9.0
+            sudo apt install -y apt-transport-https dotnet-sdk-7.0
             ;;
         fedora)
-            echo "🔵 Installing dependencies on Fedora..."
-            sudo dnf install -y git dotnet-sdk-9.0 mpv
+            echo "Installing .NET SDK on Fedora..."
+            sudo dnf install -y dotnet-sdk-7.0
             ;;
         opensuse)
-            echo "🔵 Installing dependencies on openSUSE..."
-            sudo zypper install -y git dotnet-sdk-9.0 mpv
+            echo "Installing .NET SDK on openSUSE..."
+            sudo zypper install -y dotnet-sdk-7.0
             ;;
     esac
 }
 
 # 1. Check for dotnet SDK
 if ! command -v dotnet &> /dev/null; then
-    install_deps
+    install_dotnet
 else
-    echo "✅ Dotnet SDK found: $(dotnet --version)"
+    echo "Dotnet SDK found: $(dotnet --version)"
 fi
 
-# 2. Ensure we are in the Tasky project directory
+# 2. Navigate to the script's directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-if [ ! -f "Tasky.csproj" ]; then
-    echo "🔵 Tasky project not found in current directory"
-    read -p "Do you want to clone the repository? (y/n): " clone_choice
-    if [ "$clone_choice" = "y" ]; then
-        git clone https://github.com/your-repo/tasky.git
-        cd tasky || exit 1
-    else
-        echo "❌ Please run this script in the Tasky project directory"
-        exit 1
-    fi
-fi
-
-# 3. Restore and build Tasky
-echo "🔵 Restoring NuGet packages..."
-dotnet restore
-
-echo "🔵 Building Tasky..."
-dotnet build -c Release
-
-# 4. Publish Tasky as a self-contained executable
-echo "🔵 Publishing Tasky..."
+# 3. Publish TuxSay as a self-contained executable
+echo "Publishing TuxSay..."
 dotnet publish -c Release -r linux-x64 --self-contained true -o ./publish /p:PublishSingleFile=true
 
-# 5. Find the published executable
+# 4. Find the published executable
 EXE_PATH=$(find ./publish -maxdepth 1 -type f -executable | head -n 1)
+
 if [ -z "$EXE_PATH" ]; then
-    echo "❌ Error: Published executable not found!"
+    echo "Error: Published executable not found!"
     exit 1
 fi
 
-# 6. Install system-wide
-echo "🔵 Installing Tasky to /usr/local/bin..."
-sudo cp "$EXE_PATH" /usr/local/bin/tasky
-sudo chmod +x /usr/local/bin/tasky
 
-# 7. Create desktop entry
-echo "🔵 Creating desktop entry..."
-sudo tee /usr/share/applications/tasky.desktop > /dev/null <<EOF
-[Desktop Entry]
-Name=Tasky
-Comment=Task Management Application
-Exec=tasky
-Icon=utilities-terminal
-Terminal=true
-Type=Application
-Categories=Utility;Productivity;
-EOF
 
-echo ""
-echo "🎉 Installation complete!"
-echo "You can now run Tasky from anywhere by typing: tasky"
-echo ""
-echo "Made by execRooted"
-echo "github: github.com/execRooted/Tasky"
+
+# 5. Copy the executable to /usr/local/bin as 'tuxsay'
+echo "Copying executable to /usr/local/bin..."
+sudo cp "$EXE_PATH" /usr/local/bin/tuxsay
+sudo chmod +x /usr/local/bin/tuxsay
+
+
+
+
+
+echo "=== Installation complete! ==="
+echo "You can now run 'tuxsay' from anywhere."
