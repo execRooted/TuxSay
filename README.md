@@ -1,6 +1,6 @@
 # TuxSay
 
-TuxSay is a fun C# console app that prints an ASCII Tux (Linux penguin) with a customizable message and mood.  
+TuxSay is a fun C# console app that prints an ASCII Tux (Linux penguin) with a customizable message and mood. I know cowsay does the same thing, but it doesn't have moods so yea.
 
 > Made on Arch Linux. You can see compatability down below.
 
