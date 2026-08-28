@@ -24,11 +24,8 @@ TuxSay is a fun C# console app that prints an ASCII Tux (Linux penguin) with a c
 git clone https://github.com/execRooted/TuxSay.git
 ```
 
-2. Run the installer script on Arch Linux:
+2. Run the installer script:
 
-```
-chmod +x installer.sh
-```
 ```
 sudo ./installer.sh
 ```
@@ -39,9 +36,6 @@ sudo ./installer.sh
 
 ```
 chmod +x uninstaller.sh
-```
-```
-sudo ./uninstaller.sh
 ```
 ---
 ## Compatability:
